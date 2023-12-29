@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: prod
+  labels:
+    apps: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      apps: nginx
+  template:
+    metadata:
+      labels:
+        apps: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: venki231/nginx:v0.1.0
+          ports:
+            - containerPort: 80
